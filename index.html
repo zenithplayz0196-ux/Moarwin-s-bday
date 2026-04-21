@@ -1,43 +1,80 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta charset="UTF-8">
 <title>Moarwin Special Drop 🎬</title>
+
 <style>
 body {
-    background: #0f0f0f;
+    margin: 0;
+    background: linear-gradient(135deg, #0f0f0f, #1a0000);
     color: white;
     text-align: center;
     font-family: Arial;
-    margin-top: 100px;
+    overflow: hidden;
 }
+
+h1 {
+    font-size: 40px;
+    margin-top: 100px;
+    text-shadow: 0 0 20px red;
+    animation: glow 1.5s infinite alternate;
+}
+
+@keyframes glow {
+    from { text-shadow: 0 0 10px red; }
+    to { text-shadow: 0 0 30px red; }
+}
+
 button {
-    padding: 12px 25px;
-    font-size: 18px;
-    cursor: pointer;
-    border-radius: 8px;
+    margin-top: 30px;
+    padding: 15px 30px;
+    font-size: 20px;
     background: red;
-    color: white;
     border: none;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 0 20px red;
+}
+
+button:hover {
+    transform: scale(1.1);
+}
+
+#message {
+    font-size: 22px;
+    margin-top: 20px;
+    white-space: pre-line;
 }
 </style>
 </head>
 
 <body>
 
-<h2>🔥 NEW VIDEO DROP 🔥</h2>
-<h3>Moarwin Official Channel</h3>
+<h1>🔥 MOARWIN OFFICIAL DROP 🔥</h1>
 
-<p>Click below to watch 👀</p>
+<button onclick="start()">▶ Play Video</button>
 
-<button onclick="play()">Play Video 🎬</button>
+<div id="message"></div>
 
 <script>
-function play(){
-    document.body.innerHTML = `
-    <h1>🎉 HAPPY BIRTHDAY MOARWIN 🎉</h1>
-    <p>Tu sirf YouTuber nahi… full inspiration hai 🔥</p>
-    <p>Keep growing, 1M soon loading 😎💥</p>
-    `;
+function start(){
+    let text = "🎉 HAPPY BIRTHDAY MOARWIN 🎉\n\nTu sirf YouTuber nahi… full inspiration hai 🔥\n\nKeep growing... 1M soon loading 😎💥";
+    let i = 0;
+    let speed = 50;
+
+    document.getElementById("message").innerHTML = "";
+
+    function typeWriter(){
+        if(i < text.length){
+            document.getElementById("message").innerHTML += text.charAt(i);
+            i++;
+            setTimeout(typeWriter, speed);
+        }
+    }
+
+    typeWriter();
 }
 </script>
 
