@@ -2,30 +2,36 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Moarwin Ultimate Game 🎮</title>
+<title>Moarwin Game 🎮</title>
 
 <style>
 body {
     margin:0;
-    background:black;
+    background: radial-gradient(circle, #000000, #0f2027);
     color:#00ffcc;
     font-family: monospace;
     text-align:center;
+    overflow:hidden;
 }
 
 h1 {
-    margin-top:60px;
+    margin-top:80px;
     text-shadow:0 0 20px #00ffcc;
 }
 
 button {
-    margin:20px;
+    margin:15px;
     padding:12px 25px;
     font-size:18px;
     background:#00ffcc;
     border:none;
     border-radius:8px;
     cursor:pointer;
+    box-shadow:0 0 15px #00ffcc;
+    transition:0.3s;
+}
+button:hover {
+    transform: scale(1.1);
 }
 
 #screen {
@@ -33,14 +39,32 @@ button {
     font-size:20px;
     white-space:pre-line;
 }
+
+/* loading screen */
+#loading {
+    position:fixed;
+    width:100%;
+    height:100%;
+    background:black;
+    color:#00ffcc;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:24px;
+    z-index:999;
+}
 </style>
 </head>
 
 <body>
 
+<div id="loading">Loading Game...</div>
+
 <h1>🎮 MOARWIN GAME MODE 🎮</h1>
 
-<audio id="music" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"></audio>
+<audio id="music" loop>
+<source src="https://cdn.pixabay.com/audio/2022/03/15/audio_6c1a7c0b9d.mp3" type="audio/mp3">
+</audio>
 
 <button onclick="startGame()">▶ START GAME</button>
 
@@ -48,6 +72,12 @@ button {
 
 <script>
 
+// loading effect
+setTimeout(()=>{
+ document.getElementById("loading").style.display="none";
+},2000);
+
+// typing effect
 function typeText(text){
  let i=0;
  document.getElementById("screen").innerHTML="";
@@ -55,35 +85,38 @@ function typeText(text){
   if(i<text.length){
     document.getElementById("screen").innerHTML += text.charAt(i);
     i++;
-    setTimeout(type,40);
+    setTimeout(type,35);
   }
  }
  type();
 }
 
+// start game
 function startGame(){
  document.getElementById("music").play();
- typeText("Loading Player Moarwin...\n\nSelect Level 😏");
+
+ typeText("Initializing Moarwin...\n\nSelect Your Level 🎯");
 
  setTimeout(()=>{
  document.getElementById("screen").innerHTML += `
- \n\n<button onclick="level1()">Level 1 😆</button>
- <button onclick="level2()">Level 2 😎</button>
- <button onclick="level3()">Level 3 🔥</button>
+ \n\n<button onclick="level1()">😂 Funny</button>
+ <button onclick="level2()">😎 Savage</button>
+ <button onclick="level3()">❤️ Emotional</button>
  `;
  },2000);
 }
 
+// levels
 function level1(){
- typeText("😂 Level 1: Funny Mode\n\nBhai tu ek saal aur buddha ho gaya 😆🎂\nStill no girlfriend detected 💀");
+ typeText("😂 LEVEL 1: FUNNY MODE\n\nBhai tu ek saal aur buddha ho gaya 😆🎂\nStill no girlfriend detected 💀");
 }
 
 function level2(){
- typeText("😎 Level 2: Savage Mode\n\nSystem Scan Complete...\nResult: Moarwin = LEGEND 🔥\nXP Boost +100");
+ typeText("😎 LEVEL 2: SAVAGE MODE\n\nSystem Scan...\nResult: MOARWIN = LEGEND 🔥\nXP +999\nRank: TOP G");
 }
 
 function level3(){
- typeText("❤️ Level 3: Emotional Mode\n\nHappy Birthday Moarwin 🎉\nTu online hoke bhi real se zyada close hai 🫰");
+ typeText("❤️ LEVEL 3: FINAL LEVEL\n\nHappy Birthday Moarwin 🎉\nTu online hoke bhi real se zyada close hai 🫰\nAlways stay same bro ❤️");
 }
 
 </script>
