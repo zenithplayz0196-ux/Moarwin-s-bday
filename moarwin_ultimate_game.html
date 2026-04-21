@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Moarwin Ultimate Game 🎮</title>
+
+<style>
+body {
+    margin:0;
+    background:black;
+    color:#00ffcc;
+    font-family: monospace;
+    text-align:center;
+}
+
+h1 {
+    margin-top:60px;
+    text-shadow:0 0 20px #00ffcc;
+}
+
+button {
+    margin:20px;
+    padding:12px 25px;
+    font-size:18px;
+    background:#00ffcc;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+#screen {
+    margin-top:30px;
+    font-size:20px;
+    white-space:pre-line;
+}
+</style>
+</head>
+
+<body>
+
+<h1>🎮 MOARWIN GAME MODE 🎮</h1>
+
+<audio id="music" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"></audio>
+
+<button onclick="startGame()">▶ START GAME</button>
+
+<div id="screen"></div>
+
+<script>
+
+function typeText(text){
+ let i=0;
+ document.getElementById("screen").innerHTML="";
+ function type(){
+  if(i<text.length){
+    document.getElementById("screen").innerHTML += text.charAt(i);
+    i++;
+    setTimeout(type,40);
+  }
+ }
+ type();
+}
+
+function startGame(){
+ document.getElementById("music").play();
+ typeText("Loading Player Moarwin...\n\nSelect Level 😏");
+
+ setTimeout(()=>{
+ document.getElementById("screen").innerHTML += `
+ \n\n<button onclick="level1()">Level 1 😆</button>
+ <button onclick="level2()">Level 2 😎</button>
+ <button onclick="level3()">Level 3 🔥</button>
+ `;
+ },2000);
+}
+
+function level1(){
+ typeText("😂 Level 1: Funny Mode\n\nBhai tu ek saal aur buddha ho gaya 😆🎂\nStill no girlfriend detected 💀");
+}
+
+function level2(){
+ typeText("😎 Level 2: Savage Mode\n\nSystem Scan Complete...\nResult: Moarwin = LEGEND 🔥\nXP Boost +100");
+}
+
+function level3(){
+ typeText("❤️ Level 3: Emotional Mode\n\nHappy Birthday Moarwin 🎉\nTu online hoke bhi real se zyada close hai 🫰");
+}
+
+</script>
+
+</body>
+</html>
